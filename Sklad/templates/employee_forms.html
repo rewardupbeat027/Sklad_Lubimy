@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Управление учетной записью</title>
+    <style>
+        body {
+           background-image: url("https://img.freepik.com/free-vector/warehouse-shelves-with-cardboard-and-wooden-boxes-vector-cartoon-illustration-of-factory-delivery-company-supermarket-storehouse-interior-packages-with-goods-in-large-room-with-lamps-on-ceiling_107791-23124.jpg");
+            background-repeat: no-repeat;
+            background-position: cover;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .container {
+            background-color: #222226;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            height: 600px;
+        }
+        .header {
+            background-color: #ff9900;
+            padding: 10px 20px;
+            border-radius: 8px 8px 0 0;
+            color: black;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        h6, h5 {
+            margin: 0;
+        }
+        h5 {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #ff9900;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input[type="text"], form input[type="password"], form input[type="email"], form select, form textarea {
+            padding: 1px;
+            margin-bottom: 1px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+        form button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #ff9900;
+            color: black;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+        }
+        .m {
+        color: #ff9900
+        }
+        .n {
+        margin-button: 100px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <img src="https://www.freeiconspng.com/uploads/warehouse-inventory-icon-10.png" style="width: 5%">
+        <a class="navbar-brand" href="{% url 'main' %}">ღ Склад "Любимый"</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex align-items-center ms-3">
+            <h6 class="mb-0 text-white">Учетная запись</h6>
+            <h5 class="mb-0 text-white ms-2">: {{ user.username }}</h5>
+        </div>
+        <h3 style="color: #ff9900; margin-left: 139px;">Добавить сотрудника</h3>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-warning"><a class="nav-link text-white fw-bold"
+                                                                             href="{% url 'inventar' %}">Инвентарь</a>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-warning"><a class="nav-link text-white fw-bold"
+                                                                             href="{% url 'categories' %}">Категории
+                        инвентаря</a></button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-warning"><a class="nav-link text-white fw-bold"
+                                                                             href="{% url 'employee' %}">Наши
+                        сотрудники</a></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="content m">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

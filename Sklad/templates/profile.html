@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .parent {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+.block {
+    width: 100%;
+    height: 100%;
+    position: flex;
+    top: 100%;
+    margin: -125px 0 0 -125px;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border: none;
+    }
+}
+
+    </style>
+    <title>Разработчики</title>
+</head>
+<body>
+<div class="parent">
+    <div class="block">
+        <marquee truespeed="1" scrolldelay="100" loop="-1" direction="up"
+                 style="margin-left: 300px; text-align: center; ">
+            {% for img in profile %}
+            <h1>{{ img.main }}</h1>
+            <p><img src="{{ img.imag.image.url }}" ></p>
+            <h2>{{ img.disc }}</h2>
+            <h3><p>{{ img.text }}</p></h3>
+            <br>
+            {% endfor %}
+            <h3>Спасибо всем, кто учавствовал и помогал развиваться нашему сайту!</h3>
+            <h1>Приятного пользования ღ</h1>
+        </marquee>
+    </div>
+</div>
+</body>
+</html>
